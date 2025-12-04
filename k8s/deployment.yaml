@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chishiya-web
+  labels:
+    app: chishiya-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chishiya-web
+  template:
+    metadata:
+      labels:
+        app: chishiya-web
+    spec:
+      containers:
+      - name: chishiya-web
+        image: chishiya-web:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
